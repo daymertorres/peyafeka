@@ -61,71 +61,23 @@
     .card {
       background: white;
       border-radius: 16px;
-      padding: 12px 24px 24px 24px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      padding: 16px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      margin-top: 12px;
     }
 
     .card h2 {
-      color: #601E82;
+      color: #863C95;
       font-size: 20px;
       font-weight: 700;
-      margin-top: 0;
-      margin-bottom: 15px;
+      margin: 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .monto {
-      margin: 10px 0 5px 0;
-      font-weight: bold;
-      display: flex;
-      align-items: baseline;
-      gap: 5px;
-      color: #352952;
-    }
-
-    .simbolo {
-      font-size: 28px;
-      font-weight: 600;
-    }
-
-    #monto {
-      font-size: 52px;
-      font-weight: 700;
-      letter-spacing: -1.5px;
-    }
-
-    .nombre {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 15px;
-      color: #352952;
-      text-transform: uppercase;
-    }
-
-    .datos {
-      font-size: 14px;
-      color: #6D6D7C;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 15px;
-      font-weight: 500;
-    }
-
-    .datos i {
-      color: #6D6D7C;
-      font-size: 15px;
-    }
-
-    .separator {
-      color: #d0d0d0;
-      font-weight: 300;
-    }
-
     .share {
-      color: #00D8A1;
+      color: #10cbb4;
       font-size: 14px;
       font-weight: 600;
       cursor: pointer;
@@ -133,65 +85,125 @@
       align-items: center;
       gap: 6px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+    }
+
+    .monto-box {
+      margin-top: 12px;
+    }
+
+    .monto {
+      display: flex;
+      align-items: baseline;
+      color: #000;
+      margin: 0;
+    }
+
+    .simbolo {
+      font-size: 30px;
+      font-weight: 700;
+      margin-right: 4px;
+    }
+
+    #montoFinal {
+      font-size: 48px;
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: -1px;
+    }
+
+    .nombre {
+      font-size: 20px;
+      font-weight: 700;
+      color: #000;
+      margin: 8px 0;
+      text-transform: uppercase;
+    }
+
+    .datos {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      color: #6b7280;
+      font-weight: 600;
+      margin-top: 4px;
+      margin-bottom: 8px;
+    }
+
+    .datos svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .separator {
+      margin: 0 4px;
+      color: #d1d5db;
+      font-weight: 300;
+    }
+
+    .divider {
+      border: 0;
+      border-top: 1px solid #e5e7eb;
+      margin: 8px 0;
     }
 
     .seguridad-box {
-      margin: 20px 0 15px 0;
-      border-top: 1px solid #f0f0f0;
-      border-bottom: 1px solid #f0f0f0;
-      padding: 16px 0;
+      margin-top: 8px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
     }
 
     .seguridad-header {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
 
     .label-seguridad {
-      font-size: 12px;
-      color: #7F7F8F;
-      font-weight: 700;
+      color: #7b7388;
+      font-size: 10px;
+      font-weight: 600;
       letter-spacing: 0.5px;
+      margin: 0;
     }
 
     .codigo {
       display: flex;
-      gap: 6px;
+      align-items: center;
+      gap: 4px;
     }
 
     .caja {
-      background-color: #EFEFEF;
-      width: 26px;
-      height: 28px;
+      background-color: #e5e7eb;
+      color: #374151;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 4px 10px;
       border-radius: 4px;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-weight: 700;
-      color: #444;
-      font-size: 15px;
     }
 
     .transaccion-title {
-      font-size: 12px;
-      color: #7F7F8F;
-      font-weight: 700;
+      color: #7b7388;
+      font-size: 10px;
+      font-weight: 600;
       letter-spacing: 0.5px;
-      margin: 22px 0 12px 0;
+      margin: 0 0 12px 0;
     }
 
     .info {
-      font-size: 15px;
-      color: #352952;
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 8px;
     }
 
     .info p {
-      margin: 10px 0;
+      margin: 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -202,6 +214,7 @@
     }
 
     .info p span:not(.label) {
+      color: #222;
       font-weight: 600;
     }
 
@@ -250,50 +263,45 @@
     </div>
 
     <div class="card">
-
       <h2>
         ¡Yapeaste!
-        <span class="share" onclick="compartir()">
-          <i class="fa-solid fa-share-nodes"></i> Compartir
-        </span>
+        <span class="share" onclick="compartir()"><i class="fa-solid fa-share-nodes"></i>COMPARTIR</span>
       </h2>
-
-      <div class="monto">
-        <span class="simbolo">S/</span>
-        <span id="monto">0</span>
+      <div class="monto-box">
+        <div class="monto"><span class="simbolo">S/</span><span id="montoFinal">100</span></div>
+        <div class="nombre" id="nombreDestino">PEDRO CASTILLO</div>
+        <div class="datos">
+          <svg xmlns="http://www.w3.org/2000/svg" width="0.88rem" height="0.88rem" viewBox="0 0 18.45 18.45"><g transform="translate(9 9)"><use href="#cal-shape0" transform="translate(-9 -9)"></use></g><defs><g id="cal-shape0" transform="translate(9 9)"><path d="M-5.2 -5.05 Q-7.2 -5.05 -7.2 -3.05 L-7.2 -1.8 7.25 -1.8 7.25 -3.05 Q7.25 -5.05 5.25 -5.05 L-5.2 -5.05
+                M7.25 5.25 L7.25 0.2 -7.2 0.2 -7.2 5.25 Q-7.2 7.25 -5.2 7.25 L5.25 7.25 Q7.25 7.25 7.25 5.25
+                M5.25 -7.05 Q9.25 -7.05 9.25 -3.05 L9.25 5.25 Q9.25 9.25 5.25 9.25 L-5.2 9.25 Q-9 9.25 -9 5.25
+                L-9 -3.05 Q-9 -7.05 -5.2 -7.05 L-4.75 -7.05 -4.75 -8.2 -4.45 -8.85 -4.4 -8.9 -3.75 -9
+                Q-3.35 -9 -3.0 -8.85 -2.75 -8.6 -2.75 -8.2 L-2.75 -7.05 3.2 -7.05 3.2 -8.2
+                Q3.2 -8.6 3.5 -8.85 L3.55 -8.9 Q3.8 -9 4.2 -9 4.6 -9 4.95 -8.85
+                L5.2 -8.2 5.2 -7.05 5.25 -7.05" fill="#67617b"></path></g></defs></svg>
+          <span id="fechaActual">14 jun. 2026</span><span class="separator">|</span>
+          <svg xmlns="http://www.w3.org/2000/svg" height="0.95rem" width="0.95rem" viewBox="0 0 20.4 20.4"><g transform="matrix(1, 0, 0, 1, 10.2, 10.2)"><use href="#clock-shape0" transform="matrix(1, 0, 0, 1, -10.2, -10.2)"></use></g><defs><g id="clock-shape0" transform="matrix(1, 0, 0, 1, 10.2, 10.2)"><path d="M6.0 5.65 L5.95 5.7 6.0 5.65 M0.0 2.0 L-0.65 1.75 -1.0 1.0 -1.0 -4.5 -0.7 -5.15 -0.65 -5.2 Q-0.4 -5.5 0.0 -5.5 L0.75 -5.15 1.0 -4.5 1.0 0.0 2.95 0.0 Q3.35 0.0 3.7 0.35 L3.95 1.0 3.7 1.7 3.65 1.75 2.95 2.0 0.0 2.0 M8.2 -0.05 Q8.2 -3.45 5.85 -5.75 3.45 -8.2 0.05 -8.2 -3.4 -8.2 -5.75 -5.75 -8.2 -3.45 -8.2 -0.05 -8.2 3.4 -5.75 5.75 L-5.7 5.8 -5.7 5.85 Q-3.35 8.2 0.05 8.2 3.45 8.2 5.8 5.8 L5.85 5.75 Q8.2 3.4 8.2 -0.05 M7.25 7.2 Q4.9 9.55 1.85 10.05 L0.05 10.2 -1.75 10.05 Q-4.85 9.55 -7.15 7.2 -10.2 4.3 -10.2 -0.05 -10.2 -4.25 -7.15 -7.15 -4.2 -10.2 0.05 -10.2 4.25 -10.2 7.25 -7.15 10.2 -4.25 10.2 -0.05 10.2 4.25 7.25 7.2" fill="#67617B" fill-rule="evenodd" stroke="none"></path></g></defs></svg>
+          <span id="horaActual">09:16 p. m.</span>
+        </div>
+        <hr class="divider">
       </div>
-
-      <div class="nombre" id="nombre">Nombre</div>
-
-      <div class="datos">
-        <span id="fecha"><i class="far fa-calendar-alt"></i> <span></span></span>
-        <span class="separator">|</span>
-        <span id="hora"><i class="far fa-clock"></i> <span></span></span>
-      </div>
-
       <div class="seguridad-box">
         <div class="seguridad-header">
           <span class="label-seguridad">CÓDIGO DE SEGURIDAD</span>
-          <i class="fa-solid fa-circle-info" style="color: #00D8A1; font-size: 18px; margin-left: 2px;"></i>
+          <svg width="16" height="16" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="32" fill="#06C7B1"></circle><circle cx="32" cy="18" r="3" fill="#FFFFFF"></circle><rect x="29" y="24" width="6" height="22" rx="3" fill="#FFFFFF"></rect></svg>
         </div>
-
-        <div class="codigo" id="codigo-seguridad">
-          <div class="caja">-</div>
-          <div class="caja">-</div>
-          <div class="caja">-</div>
+        <div class="codigo" id="codigoSeguridad">
+          <div class="caja">5</div>
+          <div class="caja">2</div>
+          <div class="caja">3</div>
         </div>
       </div>
-
-      <div class="transaccion-title">
-        DATOS DE LA TRANSACCIÓN
-      </div>
-
+      <hr class="divider">
+      <div class="transaccion-title">DATOS DE LA TRANSACCIÓN</div>
       <div class="info">
-        <p><span class="label">Nro. de celular</span> <span id="telefono">*********</span></p>
+        <p><span class="label">Nro. de celular</span> <span id="numeroDestino">*** *** das</span></p>
         <p><span class="label">Destino</span> <span>Yape</span></p>
-        <p><span class="label">Nro. de operación</span> <span id="operacion">---</span></p>
+        <p><span class="label">Nro. de operación</span> <span id="numeroOperacion">69032523</span></p>
       </div>
-
     </div>
 
     <div class="promo-container">
@@ -321,33 +329,33 @@
       return name.trim().toUpperCase();
     }
 
-    document.getElementById("nombre").textContent = formatName(nombre)
+    document.getElementById("nombreDestino").textContent = formatName(nombre)
 
     const montoNum = parseFloat(monto)
 
-    document.getElementById("monto").textContent =
+    document.getElementById("montoFinal").textContent =
       montoNum % 1 === 0 ? montoNum : montoNum.toFixed(2)
 
-    document.getElementById("telefono").textContent =
-      `*** ***${telefono.slice(-3)}`
+    document.getElementById("numeroDestino").textContent =
+      `*** *** ${telefono.slice(-3)}`
 
     // fecha hora
     const fechaObj = new Date()
 
     const mesStr = fechaObj.toLocaleString('es-PE', { month: 'short' }).replace('.', '').toLowerCase();
-    document.querySelector("#fecha span").textContent =
+    document.getElementById("fechaActual").textContent =
       `${fechaObj.getDate().toString().padStart(2, '0')} ${mesStr}. ${fechaObj.getFullYear()}`;
 
     let horaStr = fechaObj.toLocaleTimeString('es-PE', { hour: '2-digit', minute: '2-digit', hour12: true }).toLowerCase();
     horaStr = horaStr.replace('p.m.', 'p. m.').replace('a.m.', 'a. m.');
     // En caso venga con espacio pegado
     horaStr = horaStr.replace('p. m.', 'p. m.').replace('a. m.', 'a. m.'); 
-    document.querySelector("#hora span").textContent = horaStr;
+    document.getElementById("horaActual").textContent = horaStr;
 
     // código seguridad
     const codigo = Math.floor(Math.random() * 900 + 100).toString()
 
-    const cajas = document.getElementById("codigo-seguridad").children
+    const cajas = document.getElementById("codigoSeguridad").children
 
     for (let i = 0; i < 3; i++) {
       cajas[i].textContent = codigo[i]
@@ -372,7 +380,7 @@
     lanzarConfeti()
 
     // operación
-    document.getElementById("operacion").textContent =
+    document.getElementById("numeroOperacion").textContent =
       Math.floor(10000000 + Math.random() * 90000000)
 
     // promociones
