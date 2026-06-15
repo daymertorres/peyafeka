@@ -67,7 +67,7 @@
     }
 
     .card h2 {
-      color: #863C95;
+      color: #650D89;
       font-size: 20px;
       font-weight: 700;
       margin: 0;
@@ -77,14 +77,13 @@
     }
 
     .share {
-      color: #10cbb4;
-      font-size: 14px;
-      font-weight: 600;
+      color: #00e0b8;
+      font-size: 15px;
+      font-weight: 500;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 6px;
-      text-transform: uppercase;
     }
 
     .monto-box {
@@ -99,33 +98,34 @@
     }
 
     .simbolo {
-      font-size: 30px;
+      font-size: 26px;
       font-weight: 700;
       margin-right: 4px;
+      color: #333;
     }
 
     #montoFinal {
-      font-size: 48px;
-      font-weight: 700;
+      font-size: 45px;
+      font-weight: 500;
       margin: 0;
       letter-spacing: -1px;
+      color: #333;
     }
 
     .nombre {
       font-size: 20px;
-      font-weight: 700;
-      color: #000;
+      font-weight: 600;
+      color: #222;
       margin: 8px 0;
-      text-transform: uppercase;
     }
 
     .datos {
       display: flex;
       align-items: center;
       gap: 4px;
-      font-size: 13px;
-      color: #6b7280;
-      font-weight: 600;
+      font-size: 14px;
+      color: #666;
+      font-weight: 500;
       margin-top: 4px;
       margin-bottom: 8px;
     }
@@ -137,7 +137,7 @@
 
     .separator {
       margin: 0 4px;
-      color: #d1d5db;
+      color: #bbb;
       font-weight: 300;
     }
 
@@ -161,9 +161,9 @@
     }
 
     .label-seguridad {
-      color: #7b7388;
-      font-size: 10px;
-      font-weight: 600;
+      color: #777;
+      font-size: 11px;
+      font-weight: 700;
       letter-spacing: 0.5px;
       margin: 0;
     }
@@ -187,9 +187,9 @@
     }
 
     .transaccion-title {
-      color: #7b7388;
-      font-size: 10px;
-      font-weight: 600;
+      color: #777;
+      font-size: 11px;
+      font-weight: 700;
       letter-spacing: 0.5px;
       margin: 0 0 12px 0;
     }
@@ -214,8 +214,8 @@
     }
 
     .info p span:not(.label) {
-      color: #222;
-      font-weight: 600;
+      color: #111;
+      font-weight: 500;
     }
 
     .promo-container {
@@ -258,14 +258,14 @@
   <div class="container" id="comprobante">
 
     <div class="logo">
-      <img src="YAPE.GIF" style="height:55px; width:55px; border-radius:50%; object-fit: cover;">
+      <img src="YAPE.GIF" style="height:65px; width:65px; border-radius:50%; object-fit: cover;">
       <div class="cerrar" onclick="window.history.back()">×</div>
     </div>
 
     <div class="card">
       <h2>
         ¡Yapeaste!
-        <span class="share" onclick="compartir()"><i class="fa-solid fa-share-nodes"></i>COMPARTIR</span>
+        <span class="share" onclick="compartir()"><i class="fa-solid fa-share-nodes"></i> Compartir</span>
       </h2>
       <div class="monto-box">
         <div class="monto"><span class="simbolo">S/</span><span id="montoFinal">100</span></div>
@@ -325,8 +325,8 @@
     const monto = decodeURIComponent(params.get("monto") || "0")
 
     function formatName(name) {
-      if (name === "Sin nombre") return name.toUpperCase();
-      return name.trim().toUpperCase();
+      if (name === "Sin nombre") return name;
+      return name.trim();
     }
 
     document.getElementById("nombreDestino").textContent = formatName(nombre)
