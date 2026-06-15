@@ -1,0 +1,15 @@
+{
+  "name": "Generar Comprobante",
+  "short_name": "Comprobante",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#650D89",
+  "theme_color": "#0f2027",
+  "icons": [
+    {
+      "src": "YAPE.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Generar comprobante</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <link rel="icon" href="YAPE.svg" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#650D89" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
+  <style>
+    body {
+      font-family: Arial;
+      background: #650D89;
+      margin: 0;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      background: white;
+      color: black;
+      padding: 25px;
+      border-radius: 15px;
+      width: 320px;
+      max-width: 90%;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      color: #650D89;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border: none;
+      background: #650D89;
+      color: white;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+
+    <h2>Generar comprobante</h2>
+
+    <input id="nombre" placeholder="Nombre destino">
+
+    <input id="numero" placeholder="Número celular">
+
+    <input id="monto" placeholder="Monto">
+
+    <button onclick="generar()">Generar comprobante</button>
+
+  </div>
+
+
+  <script>
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js');
+    }
+
+    function generar() {
+
+      const nombre = document.getElementById("nombre").value
+      const telefono = document.getElementById("numero").value
+      const monto = document.getElementById("monto").value
+
+
+      if (!nombre || !telefono || !monto) {
+        alert("Completa todos los campos")
+        return
+      }
+
+      // redirigir al comprobante
+      window.location.href =
+        `yape.html?nombre=${encodeURIComponent(nombre)}&telefono=${telefono}&monto=${monto}`
+
+    }
+
+  </script>
+
+</body>
+
+</html>
