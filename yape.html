@@ -66,23 +66,23 @@
     }
 
     .card h2 {
-      color: #650D89;
-      font-size: 22px;
+      color: #601E82;
+      font-size: 20px;
       font-weight: 700;
       margin-top: 0;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
     .monto {
-      margin: 10px 0;
+      margin: 10px 0 5px 0;
       font-weight: bold;
       display: flex;
       align-items: baseline;
       gap: 5px;
-      color: #222;
+      color: #352952;
     }
 
     .simbolo {
@@ -91,51 +91,56 @@
     }
 
     #monto {
-      font-size: 48px;
+      font-size: 52px;
       font-weight: 700;
-      letter-spacing: -1px;
+      letter-spacing: -1.5px;
     }
 
     .nombre {
       font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 12px;
-      color: #222;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #352952;
+      text-transform: uppercase;
     }
 
     .datos {
       font-size: 14px;
-      color: #666;
+      color: #6D6D7C;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       margin-bottom: 15px;
+      font-weight: 500;
     }
 
     .datos i {
-      color: #888;
-      font-size: 14px;
+      color: #6D6D7C;
+      font-size: 15px;
     }
 
     .separator {
-      color: #ccc;
+      color: #d0d0d0;
+      font-weight: 300;
     }
 
     .share {
       color: #00D8A1;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .seguridad-box {
-      margin: 20px 0;
+      margin: 20px 0 15px 0;
       border-top: 1px solid #f0f0f0;
       border-bottom: 1px solid #f0f0f0;
-      padding: 18px 0;
+      padding: 16px 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -149,9 +154,9 @@
 
     .label-seguridad {
       font-size: 12px;
-      color: #777;
+      color: #7F7F8F;
       font-weight: 700;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.5px;
     }
 
     .codigo {
@@ -160,54 +165,62 @@
     }
 
     .caja {
-      background-color: #f3f3f3;
-      width: 28px;
+      background-color: #EFEFEF;
+      width: 26px;
       height: 28px;
       border-radius: 4px;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-weight: 600;
-      color: #222;
-      font-size: 16px;
+      font-weight: 700;
+      color: #444;
+      font-size: 15px;
     }
 
     .transaccion-title {
       font-size: 12px;
-      color: #777;
+      color: #7F7F8F;
       font-weight: 700;
-      letter-spacing: 0.3px;
-      margin: 20px 0 12px 0;
+      letter-spacing: 0.5px;
+      margin: 22px 0 12px 0;
     }
 
     .info {
       font-size: 15px;
-      color: #222;
+      color: #352952;
     }
 
     .info p {
-      margin: 12px 0;
+      margin: 10px 0;
       display: flex;
       justify-content: space-between;
+      align-items: center;
     }
 
     .info p .label {
-      color: #666;
+      color: #555;
     }
 
     .info p span:not(.label) {
-      font-weight: 500;
+      font-weight: 600;
+    }
+
+    .promo-container {
+      background-color: rgba(0, 0, 0, 0.18);
+      border-radius: 12px;
+      padding: 15px;
+      margin-top: 20px;
     }
 
     .mas-en-yape {
       color: white;
       font-weight: 700;
       font-size: 16px;
-      margin-top: 25px;
+      margin-top: 0;
       margin-bottom: 12px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     .nuevo-badge {
@@ -215,13 +228,14 @@
       color: #111;
       font-size: 11px;
       font-weight: 700;
-      padding: 2px 6px;
-      border-radius: 4px;
+      padding: 3px 8px;
+      border-radius: 6px;
     }
 
     .footer-img {
       width: 100%;
-      border-radius: 16px;
+      border-radius: 10px;
+      display: block;
     }
   </style>
 </head>
@@ -282,10 +296,12 @@
 
     </div>
 
-    <div class="mas-en-yape">
-      Más en Yape <span class="nuevo-badge">Nuevo</span>
+    <div class="promo-container">
+      <div class="mas-en-yape">
+        Más en Yape <span class="nuevo-badge">Nuevo</span>
+      </div>
+      <img class="footer-img" id="promo-img" src="IMAGEN.webp">
     </div>
-    <img class="footer-img" id="promo-img" src="yape.jpg">
 
   </div>
 
@@ -301,16 +317,8 @@
     const monto = decodeURIComponent(params.get("monto") || "0")
 
     function formatName(name) {
-      if (name === "Sin nombre") return name;
-      const words = name.trim().split(/\s+/);
-      if (words.length === 0) return "";
-      const formatWord = (w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
-      let result = formatWord(words[0]);
-      if (words.length > 1) {
-        const secondWord = formatWord(words[1]);
-        result += " " + secondWord.substring(0, 3) + "*";
-      }
-      return result;
+      if (name === "Sin nombre") return name.toUpperCase();
+      return name.trim().toUpperCase();
     }
 
     document.getElementById("nombre").textContent = formatName(nombre)
@@ -330,9 +338,11 @@
     document.querySelector("#fecha span").textContent =
       `${fechaObj.getDate().toString().padStart(2, '0')} ${mesStr}. ${fechaObj.getFullYear()}`;
 
-    const horaStr = fechaObj.toLocaleTimeString('es-PE', { hour: '2-digit', minute: '2-digit', hour12: true }).toLowerCase()
-    document.querySelector("#hora span").textContent =
-      horaStr.replace(' p. m.', ' p.m.').replace(' a. m.', ' a.m.').replace('p. m.', 'p.m.').replace('a. m.', 'a.m.')
+    let horaStr = fechaObj.toLocaleTimeString('es-PE', { hour: '2-digit', minute: '2-digit', hour12: true }).toLowerCase();
+    horaStr = horaStr.replace('p.m.', 'p. m.').replace('a.m.', 'a. m.');
+    // En caso venga con espacio pegado
+    horaStr = horaStr.replace('p. m.', 'p. m.').replace('a. m.', 'a. m.'); 
+    document.querySelector("#hora span").textContent = horaStr;
 
     // código seguridad
     const codigo = Math.floor(Math.random() * 900 + 100).toString()
@@ -367,7 +377,7 @@
 
     // promociones
     const promociones = [
-      "yape.jpg"
+      "IMAGEN.webp"
     ]
 
     document.getElementById("promo-img").src =
