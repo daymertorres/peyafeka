@@ -325,8 +325,26 @@
     const monto = decodeURIComponent(params.get("monto") || "0")
 
     function formatName(name) {
-      if (name === "Sin nombre") return name;
-      return name.trim();
+      if (!name || name === "Sin nombre") return name;
+      
+      const words = name.trim().toLowerCase().split(/\s+/);
+      if (words.length === 0 || words[0] === "") return "";
+      
+      let firstWord = words[0];
+      firstWord = firstWord.charAt(0).toUpperCase() + firstWord.slice(1);
+      
+      if (words.length === 1) {
+        return firstWord;
+      }
+      
+      let secondWord = words[1];
+      secondWord = secondWord.charAt(0).toUpperCase() + secondWord.slice(1);
+      
+      if (secondWord.length > 3) {
+        secondWord = secondWord.substring(0, 3);
+      }
+      
+      return firstWord + " " + secondWord + "*";
     }
 
     document.getElementById("nombreDestino").textContent = formatName(nombre)
