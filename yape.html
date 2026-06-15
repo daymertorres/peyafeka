@@ -61,7 +61,8 @@ box-shadow:0 5px 10px rgba(0,0,0,0.1);
 
 .card h2{
 color:#650D89;
-font-size:18px;
+font-size:20px;
+font-weight:700;
 margin-bottom:10px;
 display:flex;
 justify-content:space-between;
@@ -77,13 +78,13 @@ gap:5px;
 }
 
 .simbolo{
-font-size:28px;
+font-size:26px;
 font-weight:bold;
 margin-top:6px;
 }
 
 #monto{
-font-size:48px;
+font-size:45px;
 }
 
 .nombre{
@@ -106,16 +107,19 @@ color:#aaa;
 }
 
 .share{
-color:#00bfa5;
-font-size:13px;
-font-weight:bold;
+color:#00e0b8;
+font-size:15px;
+font-weight:500;
 cursor:pointer;
+display:flex;
+align-items:center;
+gap:5px;
 }
 
 .seguridad-box{
 margin:20px 0;
-border-top:1px solid #ccc;
-border-bottom:1px solid #ccc;
+border-top:1px solid #eee;
+border-bottom:1px solid #eee;
 padding:15px 0;
 display:flex;
 align-items:center;
@@ -134,9 +138,10 @@ height:20px;
 }
 
 .label-seguridad{
-font-size:13px;
-color:gray;
+font-size:12px;
+color:#777;
 font-weight:bold;
+letter-spacing:0.5px;
 }
 
 .codigo{
@@ -145,7 +150,7 @@ gap:8px;
 }
 
 .caja{
-background-color:#f0f0f0;
+background-color:#f5f5f5;
 width:30px;
 height:30px;
 border-radius:5px;
@@ -153,30 +158,34 @@ display:flex;
 justify-content:center;
 align-items:center;
 font-weight:bold;
+color:#333;
 }
 
 .transaccion-title{
-font-size:13px;
-color:gray;
+font-size:12px;
+color:#777;
 font-weight:bold;
-margin:10px 0 8px 0;
+letter-spacing:0.5px;
+margin:10px 0 10px 0;
 }
 
 .info{
-font-size:13px;
-color:gray;
+font-size:15px;
+color:#333;
 }
 
 .info p{
-margin:5px 0;
+margin:8px 0;
 display:flex;
 justify-content:space-between;
 }
 
-.info p strong,
-.info p span{
-font-weight:bold;
-color:#000;
+.info p .label {
+color:#555;
+}
+
+.info p span:not(.label) {
+color:#111;
 }
 
 .footer-img{
@@ -202,7 +211,7 @@ margin-top:20px;
 <h2>
 ¡Yapeaste!
 <span class="share" onclick="compartir()">
-<i class="fas fa-share-alt"></i> COMPARTIR
+<i class="fa-solid fa-share-nodes"></i> Compartir
 </span>
 </h2>
 
@@ -237,9 +246,9 @@ DATOS DE LA TRANSACCIÓN
 </div>
 
 <div class="info">
-<p><strong>Nro. de celular</strong> <span id="telefono">*********</span></p>
-<p><strong>Destino</strong> <span>Yape</span></p>
-<p><strong>Nro. de operación</strong> <span id="operacion">---</span></p>
+<p><span class="label">Nro. de celular</span> <span id="telefono">*********</span></p>
+<p><span class="label">Destino</span> <span>Yape</span></p>
+<p><span class="label">Nro. de operación</span> <span id="operacion">---</span></p>
 </div>
 
 </div>
@@ -286,10 +295,11 @@ document.getElementById("telefono").textContent=
 const fechaObj=new Date()
 
 document.querySelector("#fecha span").textContent=
-fechaObj.toLocaleDateString('es-PE',{day:'2-digit',month:'short',year:'numeric'})
+fechaObj.toLocaleDateString('es-PE',{day:'2-digit',month:'short',year:'numeric'}).replace('.', '')
 
+const horaStr = fechaObj.toLocaleTimeString('es-PE',{hour:'2-digit',minute:'2-digit',hour12:true}).toLowerCase()
 document.querySelector("#hora span").textContent=
-fechaObj.toLocaleTimeString('es-PE',{hour:'2-digit',minute:'2-digit',hour12:true})
+horaStr.replace('p. m.', 'p.m.').replace('a. m.', 'a.m.')
 
 // código seguridad
 const codigo=Math.floor(Math.random()*900+100).toString()
