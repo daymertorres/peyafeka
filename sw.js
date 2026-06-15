@@ -4,7 +4,7 @@ self.addEventListener('install', (e) => {
       './',
       './index.html',
       './yape.html',
-      './YAPE.svg',
+      './YAPE.GIF',
       './yape.jpg'
     ]))
   );
