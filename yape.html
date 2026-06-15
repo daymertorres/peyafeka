@@ -1,389 +1,392 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<title>Comprobante Yape</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta charset="UTF-8">
+  <title>Comprobante Yape</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 
-<link rel="icon" href="YAPE.svg" />
-<link rel="manifest" href="manifest.json" />
-<meta name="theme-color" content="#650D89" />
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" href="YAPE.svg" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#650D89" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
-<style>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #650D89;
+      color: #000;
+    }
 
-body{
-margin:0;
-font-family:'Segoe UI',sans-serif;
-background-color:#650D89;
-color:#000;
-}
+    .container {
+      max-width: 400px;
+      margin: auto;
+      padding: 60px 15px 15px 15px;
+      background-color: #650D89;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
 
-.container{
-max-width:400px;
-margin:auto;
-padding:15px;
-background-color:#650D89;
-}
+    .logo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
 
-.logo{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:10px;
-}
+    .cerrar {
+      width: 35px;
+      height: 35px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      color: white;
+      font-size: 20px;
+      text-align: center;
+      line-height: 35px;
+      cursor: pointer;
+    }
 
-.cerrar{
-width:35px;
-height:35px;
-background-color:rgba(255,255,255,0.2);
-border-radius:50%;
-color:white;
-font-size:20px;
-text-align:center;
-line-height:35px;
-cursor:pointer;
-}
+    .card {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
 
-.card{
-background:white;
-border-radius:15px;
-padding:20px;
-box-shadow:0 5px 10px rgba(0,0,0,0.1);
-}
+    .card h2 {
+      color: #650D89;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-.card h2{
-color:#650D89;
-font-size:20px;
-font-weight:700;
-margin-bottom:10px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
+    .monto {
+      margin: 5px 0;
+      font-weight: bold;
+      display: flex;
+      align-items: flex-start;
+      gap: 5px;
+    }
 
-.monto{
-margin:5px 0;
-font-weight:bold;
-display:flex;
-align-items:flex-start;
-gap:5px;
-}
+    .simbolo {
+      font-size: 26px;
+      font-weight: bold;
+      margin-top: 6px;
+    }
 
-.simbolo{
-font-size:26px;
-font-weight:bold;
-margin-top:6px;
-}
+    #monto {
+      font-size: 45px;
+    }
 
-#monto{
-font-size:45px;
-}
+    .nombre {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
 
-.nombre{
-font-size:24px;
-font-weight:bold;
-margin-bottom:10px;
-}
+    .datos {
+      font-size: 14px;
+      color: #666;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
 
-.datos{
-font-size:14px;
-color:#666;
-display:flex;
-align-items:center;
-gap:10px;
-margin-bottom:10px;
-}
+    .separator {
+      color: #aaa;
+    }
 
-.separator{
-color:#aaa;
-}
+    .share {
+      color: #00e0b8;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
 
-.share{
-color:#00e0b8;
-font-size:15px;
-font-weight:500;
-cursor:pointer;
-display:flex;
-align-items:center;
-gap:5px;
-}
+    .seguridad-box {
+      margin: 20px 0;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+      padding: 15px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-.seguridad-box{
-margin:20px 0;
-border-top:1px solid #eee;
-border-bottom:1px solid #eee;
-padding:15px 0;
-display:flex;
-align-items:center;
-justify-content:space-between;
-}
+    .seguridad-header {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
 
-.seguridad-header{
-display:flex;
-align-items:center;
-gap:5px;
-}
+    .icono-seguridad {
+      width: 20px;
+      height: 20px;
+    }
 
-.icono-seguridad{
-width:20px;
-height:20px;
-}
+    .label-seguridad {
+      font-size: 12px;
+      color: #777;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
 
-.label-seguridad{
-font-size:12px;
-color:#777;
-font-weight:bold;
-letter-spacing:0.5px;
-}
+    .codigo {
+      display: flex;
+      gap: 8px;
+    }
 
-.codigo{
-display:flex;
-gap:8px;
-}
+    .caja {
+      background-color: #f5f5f5;
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      color: #333;
+    }
 
-.caja{
-background-color:#f5f5f5;
-width:30px;
-height:30px;
-border-radius:5px;
-display:flex;
-justify-content:center;
-align-items:center;
-font-weight:bold;
-color:#333;
-}
+    .transaccion-title {
+      font-size: 12px;
+      color: #777;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      margin: 10px 0 10px 0;
+    }
 
-.transaccion-title{
-font-size:12px;
-color:#777;
-font-weight:bold;
-letter-spacing:0.5px;
-margin:10px 0 10px 0;
-}
+    .info {
+      font-size: 15px;
+      color: #333;
+    }
 
-.info{
-font-size:15px;
-color:#333;
-}
+    .info p {
+      margin: 8px 0;
+      display: flex;
+      justify-content: space-between;
+    }
 
-.info p{
-margin:8px 0;
-display:flex;
-justify-content:space-between;
-}
+    .info p .label {
+      color: #555;
+    }
 
-.info p .label {
-color:#555;
-}
+    .info p span:not(.label) {
+      color: #111;
+    }
 
-.info p span:not(.label) {
-color:#111;
-}
-
-.footer-img{
-width:100%;
-border-radius:15px;
-margin-top:20px;
-}
-
-</style>
+    .footer-img {
+      width: 100%;
+      border-radius: 15px;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="container" id="comprobante">
+  <div class="container" id="comprobante">
 
-<div class="logo">
-<img src="YAPE.svg" style="height:40px;">
-<div class="cerrar" onclick="window.history.back()">×</div>
-</div>
+    <div class="logo">
+      <img src="YAPE.svg" style="height:40px;">
+      <div class="cerrar" onclick="window.history.back()">×</div>
+    </div>
 
-<div class="card">
+    <div class="card">
 
-<h2>
-¡Yapeaste!
-<span class="share" onclick="compartir()">
-<i class="fa-solid fa-share-nodes"></i> Compartir
-</span>
-</h2>
+      <h2>
+        ¡Yapeaste!
+        <span class="share" onclick="compartir()">
+          <i class="fa-solid fa-share-nodes"></i> Compartir
+        </span>
+      </h2>
 
-<div class="monto">
-<span class="simbolo">S/</span>
-<span id="monto">0</span>
-</div>
+      <div class="monto">
+        <span class="simbolo">S/</span>
+        <span id="monto">0</span>
+      </div>
 
-<div class="nombre" id="nombre">Nombre</div>
+      <div class="nombre" id="nombre">Nombre</div>
 
-<div class="datos">
-<span id="fecha"><i class="far fa-calendar-alt"></i> <span></span></span>
-<span class="separator">|</span>
-<span id="hora"><i class="far fa-clock"></i> <span></span></span>
-</div>
+      <div class="datos">
+        <span id="fecha"><i class="far fa-calendar-alt"></i> <span></span></span>
+        <span class="separator">|</span>
+        <span id="hora"><i class="far fa-clock"></i> <span></span></span>
+      </div>
 
-<div class="seguridad-box">
-<div class="seguridad-header">
-<span class="label-seguridad">CÓDIGO DE SEGURIDAD</span>
-<i class="fa-solid fa-circle-info" style="color: #00C39F; font-size: 18px; margin-left: 2px;"></i>
-</div>
+      <div class="seguridad-box">
+        <div class="seguridad-header">
+          <span class="label-seguridad">CÓDIGO DE SEGURIDAD</span>
+          <i class="fa-solid fa-circle-info" style="color: #00C39F; font-size: 18px; margin-left: 2px;"></i>
+        </div>
 
-<div class="codigo" id="codigo-seguridad">
-<div class="caja">-</div>
-<div class="caja">-</div>
-<div class="caja">-</div>
-</div>
-</div>
+        <div class="codigo" id="codigo-seguridad">
+          <div class="caja">-</div>
+          <div class="caja">-</div>
+          <div class="caja">-</div>
+        </div>
+      </div>
 
-<div class="transaccion-title">
-DATOS DE LA TRANSACCIÓN
-</div>
+      <div class="transaccion-title">
+        DATOS DE LA TRANSACCIÓN
+      </div>
 
-<div class="info">
-<p><span class="label">Nro. de celular</span> <span id="telefono">*********</span></p>
-<p><span class="label">Destino</span> <span>Yape</span></p>
-<p><span class="label">Nro. de operación</span> <span id="operacion">---</span></p>
-</div>
+      <div class="info">
+        <p><span class="label">Nro. de celular</span> <span id="telefono">*********</span></p>
+        <p><span class="label">Destino</span> <span>Yape</span></p>
+        <p><span class="label">Nro. de operación</span> <span id="operacion">---</span></p>
+      </div>
 
-</div>
+    </div>
 
-<img class="footer-img" id="promo-img" src="yape.jpg">
+    <img class="footer-img" id="promo-img" src="yape.jpg">
 
-</div>
+  </div>
 
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./sw.js');
-}
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js');
+    }
 
-// parámetros
-const params=new URLSearchParams(window.location.search)
-const nombre=decodeURIComponent(params.get("nombre")||"Sin nombre")
-const telefono=decodeURIComponent(params.get("telefono")||"000000000")
-const monto=decodeURIComponent(params.get("monto")||"0")
+    // parámetros
+    const params = new URLSearchParams(window.location.search)
+    const nombre = decodeURIComponent(params.get("nombre") || "Sin nombre")
+    const telefono = decodeURIComponent(params.get("telefono") || "000000000")
+    const monto = decodeURIComponent(params.get("monto") || "0")
 
-function formatName(name) {
-  if (name === "Sin nombre") return name;
-  const words = name.trim().split(/\s+/);
-  if (words.length === 0) return "";
-  const formatWord = (w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
-  let result = formatWord(words[0]);
-  if (words.length > 1) {
-    const secondWord = formatWord(words[1]);
-    result += " " + secondWord.substring(0, 3) + "*";
-  }
-  return result;
-}
+    function formatName(name) {
+      if (name === "Sin nombre") return name;
+      const words = name.trim().split(/\s+/);
+      if (words.length === 0) return "";
+      const formatWord = (w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
+      let result = formatWord(words[0]);
+      if (words.length > 1) {
+        const secondWord = formatWord(words[1]);
+        result += " " + secondWord.substring(0, 3) + "*";
+      }
+      return result;
+    }
 
-document.getElementById("nombre").textContent=formatName(nombre)
+    document.getElementById("nombre").textContent = formatName(nombre)
 
-const montoNum=parseFloat(monto)
+    const montoNum = parseFloat(monto)
 
-document.getElementById("monto").textContent=
-montoNum%1===0?montoNum:montoNum.toFixed(2)
+    document.getElementById("monto").textContent =
+      montoNum % 1 === 0 ? montoNum : montoNum.toFixed(2)
 
-document.getElementById("telefono").textContent=
-`*** ***${telefono.slice(-3)}`
+    document.getElementById("telefono").textContent =
+      `*** ***${telefono.slice(-3)}`
 
-// fecha hora
-const fechaObj=new Date()
+    // fecha hora
+    const fechaObj = new Date()
 
-document.querySelector("#fecha span").textContent=
-fechaObj.toLocaleDateString('es-PE',{day:'2-digit',month:'short',year:'numeric'}).replace('.', '')
+    document.querySelector("#fecha span").textContent =
+      fechaObj.toLocaleDateString('es-PE', { day: '2-digit', month: 'short', year: 'numeric' }).replace('.', '')
 
-const horaStr = fechaObj.toLocaleTimeString('es-PE',{hour:'2-digit',minute:'2-digit',hour12:true}).toLowerCase()
-document.querySelector("#hora span").textContent=
-horaStr.replace('p. m.', 'p.m.').replace('a. m.', 'a.m.')
+    const horaStr = fechaObj.toLocaleTimeString('es-PE', { hour: '2-digit', minute: '2-digit', hour12: true }).toLowerCase()
+    document.querySelector("#hora span").textContent =
+      horaStr.replace('p. m.', 'p.m.').replace('a. m.', 'a.m.')
 
-// código seguridad
-const codigo=Math.floor(Math.random()*900+100).toString()
+    // código seguridad
+    const codigo = Math.floor(Math.random() * 900 + 100).toString()
 
-const cajas=document.getElementById("codigo-seguridad").children
+    const cajas = document.getElementById("codigo-seguridad").children
 
-for(let i=0;i<3;i++){
-cajas[i].textContent=codigo[i]
-}
+    for (let i = 0; i < 3; i++) {
+      cajas[i].textContent = codigo[i]
+    }
 
-// confeti
-function lanzarConfeti(){
+    // confeti
+    function lanzarConfeti() {
 
-confetti({
-particleCount:150,
-spread:70,
-origin:{y:0.6}
-})
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 }
+      })
 
-setTimeout(()=>{
-confetti({particleCount:100,angle:60,spread:55,origin:{x:0}})
-confetti({particleCount:100,angle:120,spread:55,origin:{x:1}})
-},300)
+      setTimeout(() => {
+        confetti({ particleCount: 100, angle: 60, spread: 55, origin: { x: 0 } })
+        confetti({ particleCount: 100, angle: 120, spread: 55, origin: { x: 1 } })
+      }, 300)
 
-}
+    }
 
-lanzarConfeti()
+    lanzarConfeti()
 
-// operación
-document.getElementById("operacion").textContent=
-Math.floor(10000000+Math.random()*90000000)
+    // operación
+    document.getElementById("operacion").textContent =
+      Math.floor(10000000 + Math.random() * 90000000)
 
-// promociones
-const promociones=[
-"yape.jpg"
-]
+    // promociones
+    const promociones = [
+      "yape.jpg"
+    ]
 
-document.getElementById("promo-img").src=
-promociones[0]
+    document.getElementById("promo-img").src =
+      promociones[0]
 
-// compartir
-async function compartir(){
+    // compartir
+    async function compartir() {
 
-const comprobante=document.getElementById("comprobante")
+      const comprobante = document.getElementById("comprobante")
 
-try{
+      try {
 
-const canvas=await html2canvas(comprobante,{
-scale:2,
-useCORS:true
-})
+        const canvas = await html2canvas(comprobante, {
+          scale: 2,
+          useCORS: true
+        })
 
-const blob=await new Promise(resolve=>
-canvas.toBlob(resolve,"image/png")
-)
+        const blob = await new Promise(resolve =>
+          canvas.toBlob(resolve, "image/png")
+        )
 
-const file=new File([blob],"comprobante.png",{type:"image/png"})
+        const file = new File([blob], "comprobante.png", { type: "image/png" })
 
-if(navigator.canShare&&navigator.canShare({files:[file]})){
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
 
-await navigator.share({
-title:"Comprobante Yape",
-text:"Te comparto el comprobante.",
-files:[file]
-})
+          await navigator.share({
+            title: "Comprobante Yape",
+            text: "Te comparto el comprobante.",
+            files: [file]
+          })
 
-}else{
+        } else {
 
-const link=document.createElement("a")
-link.href=canvas.toDataURL("image/png")
-link.download="comprobante.png"
-link.click()
+          const link = document.createElement("a")
+          link.href = canvas.toDataURL("image/png")
+          link.download = "comprobante.png"
+          link.click()
 
-}
+        }
 
-}catch(error){
+      } catch (error) {
 
-alert("Error al generar imagen")
+        alert("Error al generar imagen")
 
-}
+      }
 
-}
+    }
 
-</script>
+  </script>
 
 </body>
+
 </html>
